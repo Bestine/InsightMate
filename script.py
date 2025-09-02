@@ -2,15 +2,14 @@ import streamlit as st
 import os 
 from google import generativeai as genai
 from dotenv import load_dotenv
+import tiktoken 
 
-# # Work on the streamlit app  
-# st.title("Insights Mate")
-# st.write("Hello, Mustafa!")
-# st.file_uploader("Upload data", type=["csv", "txt"])
+
 
 # Create a single client object
 # client = genai.Client()
 
+#------------------------- SIMPLE CHAT SECTION --------------------------------
 # Load the environment variables 
 load_dotenv()
 
@@ -44,4 +43,13 @@ def chat():
         except Exception as e:
             print(f"An error occurred: {e}")
 
-chat()
+# chat()
+
+# ----------------------------------- Work on the streamlit app -------------------------------------------------------
+
+st.title("Insights Mate")
+st.write("Hello, Mustafa!")
+st.file_uploader("Upload data", type=["csv", "txt"])
+st.sidebar.header("Options")
+max_tokens  = st.sidebar.slider("Max tokens", min_value=100, max_value=4096, value=1024)
+st.write("Max tokens:", max_tokens)
